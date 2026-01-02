@@ -3798,16 +3798,6 @@ files = [
     {file = "kiwipiepy-0.21.0-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:ea85c395589be5916e679db2288e551b796af9f13460510d5d9b15e60ef6e30f"},
     {file = "kiwipiepy-0.21.0-cp313-cp313-win32.whl", hash = "sha256:6b2203d25d139cf363963bd4aaefd6612bb285b3019a0273c11dd6cecd2eba35"},
     {file = "kiwipiepy-0.21.0-cp313-cp313-win_amd64.whl", hash = "sha256:d6b72b1874a5adbbcf826054a6f638d671c71fd3be00fe7942332790e3da9e01"},
-    {file = "kiwipiepy-0.21.0-cp38-cp38-macosx_13_0_arm64.whl", hash = "sha256:453f5d909c30e789c31321e78bf604d8f8074359d9829e8c13638a703d857a6c"},
-    {file = "kiwipiepy-0.21.0-cp38-cp38-macosx_13_0_x86_64.whl", hash = "sha256:5798a4bf2a1189cdd11ff2a68f87995f7c1e57ab286fe12d2bcced5a4d57ec38"},
-    {file = "kiwipiepy-0.21.0-cp38-cp38-manylinux_2_12_x86_64.manylinux2010_x86_64.whl", hash = "sha256:5e8944c5283ccd90c5419c39fa0e4de0dd3db7c70c36483d6dde0ef9620ede0c"},
-    {file = "kiwipiepy-0.21.0-cp38-cp38-win32.whl", hash = "sha256:5bc3973bc0c98a027a0ecf69192d1ec04372e507b4542364ff8053373ad43ad6"},
-    {file = "kiwipiepy-0.21.0-cp38-cp38-win_amd64.whl", hash = "sha256:60c0ddd2378cc79ba4a8ff583f25d1e946f4a06b01569dacb4ce43f7fc8bf97f"},
-    {file = "kiwipiepy-0.21.0-cp39-cp39-macosx_13_0_arm64.whl", hash = "sha256:7e2c8c29d4d943a9dd257e6c1a2fa02c8df0d8fa57aaeb2803f5fbf37cf8e80f"},
-    {file = "kiwipiepy-0.21.0-cp39-cp39-macosx_13_0_x86_64.whl", hash = "sha256:084fe732cec0926eca95209ded2ae7c7ababcafb04114cc4c4c472b98935cd28"},
-    {file = "kiwipiepy-0.21.0-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:9c62ce1dfa82e7985d8ce3a8ca7882c6e050045f7a9eb70afd9f86c4d7e49b22"},
-    {file = "kiwipiepy-0.21.0-cp39-cp39-win32.whl", hash = "sha256:6b05294071dcf47d2c884a762bc33644805d438b40244ef835e02e59c79b149b"},
-    {file = "kiwipiepy-0.21.0-cp39-cp39-win_amd64.whl", hash = "sha256:1c51e0ccf6a92882d80fa204bb66bd785053184d607a88b65bb1a4f15cf5ee5e"},
     {file = "kiwipiepy-0.21.0.tar.gz", hash = "sha256:f94b774987fb789ffaa157d49d1710cde2f1330882e8da4b1518a6929ef91089"},
 ]
 
@@ -11380,4 +11370,4 @@ cffi = ["cffi (>=1.17,<2.0)", "cffi (>=2.0.0b)"]
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.11,<3.13"
-content-hash = "7f825796dcefd8f31700199142fd0ccaf29b6f471d844f88261221fb8a621dde"
+content-hash = "843d0b82436ea360cfe5e3cac24e14254954e33f22e25875d84bc44c5d25af9b"
