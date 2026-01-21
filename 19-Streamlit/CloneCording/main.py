@@ -8,6 +8,8 @@ from langchain_core.output_parsers import StrOutputParser
 from langchain_teddynote.prompts import load_prompt
 from langchain_core.messages.chat import ChatMessage
 from langchainhub import Client
+import glob
+
 
 # API KEY 정보로드
 load_dotenv()
@@ -18,12 +20,13 @@ if "messages" not in st.session_state:
     # 대화기록을 저장하는 저장소
     st.session_state["messages"] = []
 
-# 버튼 생성
+# 사이드바 생성
 with st.sidebar:
     claer_btn = st.button("대화 초기화")
-    selectedPrompt = st.selectbox(
-        "프롬프트를 선택해 주세요", ("기본모드", "블로그 게시글", "요약"), index=0
-    )
+
+    prompt_files = glob.glob("prompts/*.yaml")
+    selectedPrompt = st.selectbox("프롬프트를 선택해 주세요", prompt_files, index=0)
+    task_input = st.text_input("TASK 입력", "")
 
 
 # 세션에 메세지 추가
@@ -42,28 +45,33 @@ def print_messages():
 
 
 # 체인 생성
-def create_chain(prompt_type):
+def create_chain(prompt_file_path, task=""):
     # prompt | llm | output_pasrser
 
     # 프롬프트
-    prompt = ChatPromptTemplate.from_messages(
-        [
-            (
-                "system",
-                "당신은 친절한 AI 어시스턴트입니다. 다음의 질문에 간결하게 답변해주세요.",
-            ),
-            ("user", "#Question:\n{question}"),
-        ]
-    )
+    # 기본모드 제거
+    # prompt = ChatPromptTemplate.from_messages(
+    #     [
+    #         (
+    #             "system",
+    #             "당신은 친절한 AI 어시스턴트입니다. 다음의 질문에 간결하게 답변해주세요.",
+    #         ),
+    #         ("user", "#Question:\n{question}"),
+    #     ]
+    # )
 
-    if prompt_type == "블로그 게시글":
-        prompt = load_prompt("prompts/blog.yaml", encoding="utf-8")
-    elif prompt_type == "요약":
-        client = Client()
-        prompt = client.pull("teddynote/chain-of-density-map-korean")
+    # if prompt_type == "블로그 게시글":
+    #     prompt = load_prompt("prompts/blog.yaml", encoding="utf-8")
+    # elif prompt_type == "요약":
+    #     client = Client()
+    #     prompt = client.pull("teddynote/chain-of-density-map-korean")
+
+    prompt = load_prompt(prompt_file_path, encoding="utf-8")
+    if task:
+        prompt = prompt.partial(task=task)
 
     # GPT
-    llm = ChatOpenAI(model_name="gpt-4o", temperature=0)
+    llm = ChatOpenAI(model_name="gpt-4o-mini", temperature=0)
     # 출력 파서
     output_parser = StrOutputParser()
     # 체인 생성
@@ -88,7 +96,7 @@ if user_input:
     #     st.write(user_input)
     # 웹에 대화를 출력, 동일 로직
     st.chat_message("user").write(user_input)
-    chain = create_chain(selectedPrompt)
+    chain = create_chain(selectedPrompt, task=task_input)
     # ai_answer = chain.invoke({"question": user_input})
 
     # 스트리밍 호출
